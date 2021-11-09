@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:texple_flutter/screens/secondScreen1.dart';
 import 'package:http/http.dart' as http;
+import 'package:firebase_auth/firebase_auth.dart';
 
 class MyApp1 extends StatelessWidget {
   // This widget is the root of your application.
@@ -27,6 +28,23 @@ class _MyHomePageState extends State<MyHomePage> {
   final myController = TextEditingController();
   final _dataService = DataService();
   String _response;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  checkAuth() async {
+    _auth.onAuthStateChanged.listen((user) {
+      if (user != Null) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => SecondScreen()));
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.checkAuth();
+  }
 
   void _makeRequest() async {
     final response = await _dataService.makeRequestToApi();
@@ -77,29 +95,49 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 height: 100.0,
               ),
-              Builder(builder: (_) {
-                String input = myController.text;
-                if (_response ==
-                        '{"message":"The mobile number is not registered!!!"}' &&
-                    input == '8169965998') {
-                  return Text(_response);
-                } else {
-                  return OutlinedButton(
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  OutlinedButton(
+                    onPressed: () {},
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.blue)),
-                    onPressed: () {
-                      _makeRequest;
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SecondScreen()),
-                      );
-                    },
-                    child: const Text('Register',
+                    child: const Text(' Login ',
                         style: TextStyle(color: Colors.white)),
-                  );
-                }
-              }),
+                  ),
+                  SizedBox(
+                    width: 15.0,
+                  ),
+                  Builder(builder: (_) {
+                    String input = myController.text;
+                    if (_response ==
+                            '{"message":"The mobile number is not registered!!!"}' &&
+                        input == '8169965998') {
+                      return Text(_response);
+                    } else {
+                      return OutlinedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.blue)),
+                        onPressed: () {
+                          _makeRequest;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SecondScreen()),
+                          );
+                        },
+                        child: const Text('Register',
+                            style: TextStyle(color: Colors.white)),
+                      );
+                    }
+                  }),
+                ],
+              ),
+
+              // ),
             ],
           ),
         ),

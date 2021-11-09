@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "665029990153",
+    "project_id": "texplelogin",
+    "storage_bucket": "texplelogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665029990153:android:59137f5d3f62122ccf65d8",
+        "android_client_info": {
+          "package_name": "com.example.texple_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665029990153-q4crn5j4it3gskrjr4hcqajtql564l3m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.texple_flutter",
+            "certificate_hash": "1e0c9104f6cf8ccabe11f324f5b7e6225b0fef25"
+          }
+        },
+        {
+          "client_id": "665029990153-obneu1tmttk5lbhbuotof66ut7ap949v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAOtAAe4afIjS6Eu427GX3r_LYu2DV9_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665029990153-obneu1tmttk5lbhbuotof66ut7ap949v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
