@@ -1,6 +1,6 @@
 # flutter app
 
-A new Flutter project.
+Note: this project code and output may change.
 
 ## Snapshots
 ### Snapshots 1,2 
